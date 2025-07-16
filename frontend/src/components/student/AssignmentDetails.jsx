@@ -19,12 +19,16 @@ const AssignmentDetails = ({ assignment, studentId, refresh }) => {
     formData.append("studentId", studentId);
 
     try {
-      await axios.post(`/api/assignment/${assignment._id}/submit`, formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      await axios.post(
+        `https://examdeploy.onrender.com/api/assignment/${assignment._id}/submit`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       toast.success("Submitted successfully!");
       setFile(null);
       refresh?.();

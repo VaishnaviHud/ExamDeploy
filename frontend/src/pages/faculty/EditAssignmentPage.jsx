@@ -20,9 +20,12 @@ const EditAssignmentPage = () => {
   useEffect(() => {
     const fetchAssignment = async () => {
       try {
-        const { data } = await axios.get(`/api/assignment/${id}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const { data } = await axios.get(
+          `https://examdeploy.onrender.com/api/assignment/${id}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         setTitle(data.title);
         setDescription(data.description);
         setDueDate(data.dueDate.split("T")[0]);
@@ -45,12 +48,16 @@ const EditAssignmentPage = () => {
       formData.append("dueDate", dueDate);
       if (referenceFile) formData.append("referenceFile", referenceFile);
 
-      await axios.put(`/api/assignment/${id}`, formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      await axios.put(
+        `https://examdeploy.onrender.com/api/assignment/${id}`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
       toast.success("Assignment updated!");
       navigate(-1);

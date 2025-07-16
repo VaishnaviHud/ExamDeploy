@@ -16,9 +16,12 @@ const SubjectAssignmentsPage = () => {
   useEffect(() => {
     const fetch = async () => {
       const token = localStorage.getItem("token");
-      const res = await axios.get(`/api/assignment/subject/${subjectId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await axios.get(
+        `https://examdeploy.onrender.com/api/assignment/subject/${subjectId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setAssignments(res.data);
     };
     fetch();

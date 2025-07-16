@@ -12,7 +12,9 @@ const StudentSubjects = () => {
   useEffect(() => {
     const fetchSubjects = async () => {
       try {
-        const { data } = await axios.get(`/api/subjects/student/${user?.id}`);
+        const { data } = await axios.get(
+          `https://examdeploy.onrender.com/api/subjects/student/${user?.id}`
+        );
         setSubjects(data);
         if (data.length) setSelected(data[0]); 
       } catch (error) {

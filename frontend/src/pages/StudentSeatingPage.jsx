@@ -12,9 +12,12 @@ const StudentSeatingPage = () => {
   const fetchSeating = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get(`/api/seating/student/${user?.id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await axios.get(
+        `https://examdeploy.onrender.com/api/seating/student/${user?.id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       // Filter upcoming exams
       const today = new Date().setHours(0, 0, 0, 0);
       const upcoming = res.data.filter((s) => {

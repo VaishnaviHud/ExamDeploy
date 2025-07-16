@@ -25,7 +25,7 @@ const SubmissionList = ({ submissions, assignmentId, refresh }) => {
     const token = localStorage.getItem("token");
     try {
       await axios.put(
-        `/api/assignment/${assignmentId}/grade/${studentId}`,
+        `https://examdeploy.onrender.com/api/assignment/${assignmentId}/grade/${studentId}`,
         {
           marks: grades[studentId]?.marks,
           feedback: grades[studentId]?.feedback,

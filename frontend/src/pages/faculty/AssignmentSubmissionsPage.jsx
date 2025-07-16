@@ -13,11 +13,14 @@ const AssignmentSubmissionsPage = () => {
 
   const fetchAssignment = async () => {
     try {
-      const { data } = await axios.get(`/api/assignment/${assignmentId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const { data } = await axios.get(
+        `https://examdeploy.onrender.com/api/assignment/${assignmentId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       setAssignment(data);
     } catch (err) {
       toast.error("Failed to load assignment");
