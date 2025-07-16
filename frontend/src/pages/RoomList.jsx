@@ -17,7 +17,7 @@ const RoomsList = () => {
   const fetchRooms = async () => {
     try {
       setLoading(true);
-      const response = await fetch("http://localhost:4000/api/rooms/rooms");
+      const response = await fetch("https://examdeploy.onrender.com/api/rooms/rooms");
       if (!response.ok) throw new Error("Failed to fetch rooms");
       const data = await response.json();
       setRooms(data);
@@ -40,7 +40,7 @@ const RoomsList = () => {
       setAddError("");
       setAddSuccess("");
 
-      const response = await fetch("http://localhost:4000/api/rooms/add-room", {
+      const response = await fetch("https://examdeploy.onrender.com/api/rooms/add-room", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

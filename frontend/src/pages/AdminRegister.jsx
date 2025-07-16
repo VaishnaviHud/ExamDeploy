@@ -25,7 +25,7 @@ const AdminRegister = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/api/admin/register",
+        "https://examdeploy.onrender.com/api/admin/register",
         formData
       );
       toast.success(data.message || "Admin registered successfully!");

@@ -20,10 +20,10 @@ const AdminDashboard = () => {
       setLoading(true);
       try {
         const [studentsRes, teachersRes] = await Promise.all([
-          axios.get("http://localhost:4000/api/students", {
+          axios.get("https://examdeploy.onrender.com/api/students", {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get("http://localhost:4000/api/teachers", {
+          axios.get("https://examdeploy.onrender.com/api/teachers", {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);
@@ -31,7 +31,7 @@ const AdminDashboard = () => {
         setTeachers(teachersRes.data);
       } catch (error) {
         console.error("Error fetching data", error);
-        toast.error("Failed to load data.");
+       // toast.error("Failed to load data.");
       } finally {
         setLoading(false);
       }
@@ -44,7 +44,7 @@ const AdminDashboard = () => {
     setVerifying(id);
     try {
       await axios.put(
-        `http://localhost:4000/api/${type}/verify/${id}`,
+        `https://examdeploy.onrender.com/api/${type}/verify/${id}`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },

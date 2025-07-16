@@ -10,7 +10,7 @@ const StudentDashboard = () => {
   useEffect(() => {
     const fetchExams = async () => {
       try {
-        const { data } = await axios.get("http://localhost:4000/api/exams", {
+        const { data } = await axios.get("https://examdeploy.onrender.com/api/exams", {
           params: {
             branch: user.branch,
             semester: user.semester,

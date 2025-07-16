@@ -23,8 +23,8 @@ const AddExam = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const subjectRes = await axios.get("http://localhost:4000/api/subjects");
-        const teacherRes = await axios.get("http://localhost:4000/api/teachers");
+        const subjectRes = await axios.get("https://examdeploy.onrender.com/api/subjects");
+        const teacherRes = await axios.get("https://examdeploy.onrender.com/api/teachers");
 
         setSubjects(subjectRes.data);
         setTeachers(teacherRes.data);
@@ -51,7 +51,7 @@ const AddExam = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:4000/api/exams/add", formData, {
+      await axios.post("https://examdeploy.onrender.com/api/exams/add", formData, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
 

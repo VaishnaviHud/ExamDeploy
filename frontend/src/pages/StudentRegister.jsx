@@ -25,7 +25,7 @@ const StudentRegister = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/students/register",
+        "https://examdeploy.onrender.com/api/students/register",
         formData
       );
       toast.success(res.data.message || "Student registered successfully!");

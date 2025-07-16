@@ -19,7 +19,7 @@ const StudentGrades = () => {
     }
 
     try {
-      const res = await axios.get("http://localhost:4000/api/students/grades", {
+      const res = await axios.get("https://examdeploy.onrender.com/api/students/grades", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

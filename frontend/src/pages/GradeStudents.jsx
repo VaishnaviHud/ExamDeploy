@@ -21,7 +21,7 @@ const GradeStudents = () => {
 
     axios
       .get(
-        `http://localhost:4000/api/exams?branch=${encodedBranch}&semester=${semester}`,
+        `https://examdeploy.onrender.com/api/exams?branch=${encodedBranch}&semester=${semester}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -33,7 +33,7 @@ const GradeStudents = () => {
   const fetchStudentsStatus = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:4000/api/marks/students-status?branch=${branch}&semester=${semester}&exam_id=${selectedExamId}`,
+        `https://examdeploy.onrender.com/api/marks/students-status?branch=${branch}&semester=${semester}&exam_id=${selectedExamId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -65,7 +65,7 @@ const GradeStudents = () => {
     };
 
     try {
-      await axios.post("http://localhost:4000/api/marks/add", payload, {
+      await axios.post("https://examdeploy.onrender.com/api/marks/add", payload, {
         headers: { Authorization: `Bearer ${token}` },
       });
       toast.success("Marks submitted!");
@@ -82,7 +82,7 @@ const handleEditMarks = async (markId, studentId) => {
       total_marks: formData[studentId]?.total_marks,
     };
 
-    await axios.put(`http://localhost:4000/api/marks/${markId}`, updatedData, {
+    await axios.put(`https://examdeploy.onrender.com/api/marks/${markId}`, updatedData, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
@@ -95,7 +95,7 @@ const handleEditMarks = async (markId, studentId) => {
 
 const handleDeleteMarks = async (markId) => {
   try {
-    await axios.delete(`http://localhost:4000/api/marks/${markId}`, {
+    await axios.delete(`https://examdeploy.onrender.com/api/marks/${markId}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     toast.success("Marks deleted!");
@@ -109,7 +109,7 @@ const handleDeleteMarks = async (markId) => {
   const handleAutoGrade = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:4000/api/marks/auto-grade?subject_id=${selectedSubjectId}`,
+        `https://examdeploy.onrender.com/api/marks/auto-grade?subject_id=${selectedSubjectId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

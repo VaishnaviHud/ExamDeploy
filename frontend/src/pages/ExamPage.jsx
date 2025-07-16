@@ -19,7 +19,7 @@ const ExamList = () => {
 
   useEffect(() => {
     // Fetch exams
-    axios.get("http://localhost:4000/api/exams/all")
+    axios.get("https://examdeploy.onrender.com/api/exams/all")
       .then((response) => {
         setExams(Array.isArray(response.data) ? response.data : []);
       })
@@ -28,7 +28,7 @@ const ExamList = () => {
       });
 
     // Fetch subjects
-    axios.get("http://localhost:4000/api/exams/subjects/all")
+    axios.get("https://examdeploy.onrender.com/api/exams/subjects/all")
       .then((response) => {
         setSubjects(Array.isArray(response.data) ? response.data : []);
       })
@@ -37,7 +37,7 @@ const ExamList = () => {
       });
 
     // Fetch teachers
-    axios.get("http://localhost:4000/api/exams/teachers/all")
+    axios.get("https://examdeploy.onrender.com/api/exams/teachers/all")
       .then((response) => {
         const teachersData = response.data && Array.isArray(response.data) ? response.data : [];
         setTeachers(teachersData);
@@ -61,11 +61,11 @@ const ExamList = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:4000/api/exams/create", formData);
+      const response = await axios.post("https://examdeploy.onrender.com/api/exams/create", formData);
       alert("Exam created successfully!");
       setShowForm(false);
       // Refresh exams
-      const updatedExams = await axios.get("http://localhost:4000/api/exams/all");
+      const updatedExams = await axios.get("https://examdeploy.onrender.com/api/exams/all");
       setExams(Array.isArray(updatedExams.data) ? updatedExams.data : []);
     } catch (error) {
       console.error("Error creating exam:", error);

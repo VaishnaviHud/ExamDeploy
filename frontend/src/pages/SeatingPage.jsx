@@ -139,7 +139,7 @@ export default function SeatingPage() {
   // Load all exams
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/exams/all")
+      .get("https://examdeploy.onrender.com/api/exams/all")
       .then((res) => setExams(res.data))
       .catch((err) => console.error("Failed to load exams", err));
   }, []);
@@ -148,7 +148,7 @@ export default function SeatingPage() {
   const fetchSeating = async () => {
     try {
       setSeatingLoading(true);
-      const res = await axios.get("http://localhost:4000/api/seating/all");
+      const res = await axios.get("https://examdeploy.onrender.com/api/seating/all");
       setSeatingData(res.data);
     } catch (err) {
       console.error("Failed to load seating data", err);
@@ -169,7 +169,7 @@ export default function SeatingPage() {
 
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:4000/api/seating/generate-seating", {
+      const res = await axios.post("https://examdeploy.onrender.com/api/seating/generate-seating", {
         exam_id: selectedExam,
       });
       setMessage(res.data.message);

@@ -26,7 +26,7 @@ const SubjectManagement = () => {
   const fetchSubjects = async () => {
     try {
       setLoading(true);
-      const response = await fetch("http://localhost:4000/api/subjects/list");
+      const response = await fetch("https://examdeploy.onrender.com/api/subjects/list");
       if (!response.ok) throw new Error("Failed to fetch subjects");
       const data = await response.json();
       setSubjects(data);
@@ -39,7 +39,7 @@ const SubjectManagement = () => {
 
   const fetchTeachers = async () => {
     try {
-      const response = await fetch("http://localhost:4000/api/subjects/teachers");
+      const response = await fetch("https://examdeploy.onrender.com/api/subjects/teachers");
       if (!response.ok) throw new Error("Failed to fetch teachers");
       const data = await response.json();
       setTeachers(data);
@@ -60,7 +60,7 @@ const SubjectManagement = () => {
       setAddError("");
       setAddSuccess("");
 
-      const response = await fetch("http://localhost:4000/api/subjects/add", {
+      const response = await fetch("https://examdeploy.onrender.com/api/subjects/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

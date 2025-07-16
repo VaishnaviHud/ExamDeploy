@@ -19,7 +19,7 @@ const TeacherLogin = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/api/teachers/login",
+        "https://examdeploy.onrender.com/api/teachers/login",
         formData
       );
 

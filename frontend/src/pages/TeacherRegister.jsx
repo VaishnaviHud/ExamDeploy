@@ -22,7 +22,7 @@ const TeacherRegister = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/teachers/register",
+        "https://examdeploy.onrender.com/api/teachers/register",
         formData
       );
       toast.success(res.data.message || "Teacher registered successfully!");

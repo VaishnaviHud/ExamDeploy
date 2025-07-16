@@ -19,7 +19,7 @@ const StudentLogin = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/api/students/login",
+        "https://examdeploy.onrender.com/api/students/login",
         formData
       );
       
