@@ -102,12 +102,12 @@ const Home = () => {
               Oversee platform activity and verify users.
             </p>
             <div className="flex flex-col items-center">
-              <Link
+              {/* <Link
                 to="/admin-register"
                 className="w-full bg-blue-500 text-white px-4 py-2 rounded-lg mb-2 hover:bg-blue-600 transition"
               >
                 Register
-              </Link>
+              </Link> */}
               <Link
                 to="/admin-login"
                 className="w-full bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition"
