@@ -80,17 +80,19 @@ const StudentLogin = () => {
         </button>
 
         {/* Forgot Password & Register Links */}
-        <div className="mt-4">
-          <p className="text-gray-600 text-sm mt-2">
-            Don't have an account?{" "}
-            <a
-              href="/student-register"
-              className="text-blue-500 hover:underline"
-            >
-              Sign Up
-            </a>
-          </p>
-        </div>
+        {/* Forgot Password & Register Links */}
+<div className="mt-4">
+  <p className="text-gray-600 text-sm mt-2">
+    Don't have an account?{" "}
+    <span
+      onClick={() => navigate("/student-register")}
+      className="text-blue-500 hover:underline cursor-pointer"
+    >
+      Sign Up
+    </span>
+  </p>
+</div>
+
       </div>
     </div>
   );
