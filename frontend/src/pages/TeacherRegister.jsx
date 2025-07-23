@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const TeacherRegister = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     teacher_id: "",
     first_name: "",
@@ -55,7 +58,7 @@ const TeacherRegister = () => {
             />
           </div>
 
-          {/* First Name & Last Name Side by Side */}
+          {/* First Name & Last Name */}
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-700">
@@ -86,8 +89,8 @@ const TeacherRegister = () => {
             </div>
           </div>
 
-          {/* Other Fields */}
-          {[
+          {/* Email, Department, Password */}
+          {[ 
             { label: "Email", name: "email", type: "email" },
             { label: "Department", name: "department", type: "text" },
             { label: "Password", name: "password", type: "password" },
@@ -116,11 +119,15 @@ const TeacherRegister = () => {
           </button>
         </form>
 
+        {/* Login Link */}
         <p className="text-gray-600 text-sm mt-4 text-center">
           Already have an account?{" "}
-          <a href="/teacher-login" className="text-blue-500 hover:underline">
+          <span
+            onClick={() => navigate("/teacher-login")}
+            className="text-blue-500 hover:underline cursor-pointer"
+          >
             Login
-          </a>
+          </span>
         </p>
       </div>
     </div>

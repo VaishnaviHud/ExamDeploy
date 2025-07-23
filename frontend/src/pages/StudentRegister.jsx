@@ -1,13 +1,16 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // ✅ Import useNavigate
 import axios from "axios";
-import { toast,ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const StudentRegister = () => {
+  const navigate = useNavigate(); // ✅ Initialize navigate
+
   const [formData, setFormData] = useState({
     student_id: "",
     first_name: "",
-    last_name:"",
+    last_name: "",
     branch: "",
     semester: "",
     subjects_enrolled: "",
@@ -29,6 +32,9 @@ const StudentRegister = () => {
         formData
       );
       toast.success(res.data.message || "Student registered successfully!");
+      setTimeout(() => {
+        navigate("/student-login"); // ✅ Redirect after success
+      }, 2000);
     } catch (error) {
       toast.error(error.response?.data?.error || "Something went wrong!");
     }
@@ -58,7 +64,7 @@ const StudentRegister = () => {
             />
           </div>
 
-          {/* First Name & Last Name Side by Side */}
+          {/* First Name & Last Name */}
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-700">
@@ -120,11 +126,15 @@ const StudentRegister = () => {
           </button>
         </form>
 
+        {/* Login Link using navigate */}
         <p className="text-gray-600 text-sm mt-4 text-center">
           Already have an account?{" "}
-          <a href="/student-login" className="text-blue-500 hover:underline">
+          <span
+            onClick={() => navigate("/student-login")}
+            className="text-blue-500 hover:underline cursor-pointer"
+          >
             Login
-          </a>
+          </span>
         </p>
       </div>
     </div>

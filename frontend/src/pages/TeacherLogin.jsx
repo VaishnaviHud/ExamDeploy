@@ -77,12 +77,16 @@ const TeacherLogin = () => {
           </button>
         </form>
 
+        {/* Navigate to register page using useNavigate */}
         <div className="mt-4">
           <p className="text-gray-600 text-sm mt-2">
             Don't have an account?{" "}
-            <a href="/teacher-register" className="text-blue-500 hover:underline">
+            <span
+              onClick={() => navigate("/teacher-register")}
+              className="text-blue-500 hover:underline cursor-pointer"
+            >
               Sign Up
-            </a>
+            </span>
           </p>
         </div>
       </div>

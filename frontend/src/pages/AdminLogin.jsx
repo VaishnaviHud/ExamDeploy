@@ -77,14 +77,14 @@ const AdminLogin = () => {
           </button>
         </form>
 
-        <div className="mt-4">
+        {/* <div className="mt-4">
           <p className="text-gray-600 text-sm mt-2">
             Don't have an account?{" "}
             <a href="/admin-register" className="text-blue-500 hover:underline">
               Sign Up
             </a>
           </p>
-        </div>
+        </div> */}
       </div>
     </div>
   );
