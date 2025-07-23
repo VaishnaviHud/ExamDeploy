@@ -12,9 +12,11 @@ const StudentSubjects = () => {
   useEffect(() => {
     const fetchSubjects = async () => {
       try {
-        const { data } = await axios.get(`/api/subjects/student/${user?.id}`);
+        const { data } = await axios.get(
+          `https://examdeploy.onrender.com/api/subjects/student/${user?.id}`
+        );
         setSubjects(data);
-        if (data.length) setSelected(data[0]); 
+        if (data.length) setSelected(data[0]);
       } catch (error) {
         console.error("Failed to fetch subjects", error);
       }
@@ -30,17 +32,23 @@ const StudentSubjects = () => {
         selected={selected}
         onSelect={setSelected}
       />
-      {/* Main panel */}
+
+      {/* Main Panel */}
       <div className="flex-1 p-6 transition-all duration-300">
         <h2 className="text-xl font-semibold text-blue-800 mb-4">
           My Subjects
         </h2>
-
-        {selected ? (
-          <SubjectCard subj={selected} />
-        ) : (
-          <p className="text-gray-500">Select a subject to view details.</p>
-        )}
+        {/* All subjects list */}
+        <div>
+          <h3 className="text-lg font-medium text-gray-700 mb-2">
+            All Subjects
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {subjects.map((subj) => (
+              <SubjectCard key={subj._id} subj={subj} />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

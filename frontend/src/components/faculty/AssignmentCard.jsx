@@ -28,9 +28,12 @@ const AssignmentCard = ({ assignment,  refreshAssignments }) => {
 
       try {
         const token = localStorage.getItem("token");
-      await axios.delete(`/api/assignment/${assignment._id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `https://examdeploy.onrender.com/api/assignment/${assignment._id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       toast.success("Assignment deleted");
       refreshAssignments(); // Refetch after deletion
     } catch {

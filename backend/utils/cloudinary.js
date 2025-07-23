@@ -13,7 +13,8 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
-    folder: "examEaseAssignments", // folder name in Cloudinary
+    folder: "examEaseAssignments",
+    resource_type: "raw", 
     allowed_formats: ["pdf", "doc", "docx", "jpg", "png"],
   },
 });

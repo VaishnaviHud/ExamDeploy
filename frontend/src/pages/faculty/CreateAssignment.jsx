@@ -26,7 +26,9 @@ const CreateAssignment = () => {
 
   const fetchSubjects = async () => {
     try {
-      const { data } = await axios.get(`/api/subjects/faculty/${teacherId}`);
+      const { data } = await axios.get(
+        `https://examdeploy.onrender.com/api/subjects/faculty/${teacherId}`
+      );
       setSubjects(data);
     } catch {
       toast.error("Failed to load subjects");
@@ -36,21 +38,26 @@ const CreateAssignment = () => {
   const handleSubjectChange = async (id) => {
     setSelectedSubjectId(id);
     try {
-      const subjectRes = await axios.get(`/api/subjects/${id}`);
+      const subjectRes = await axios.get(
+        `https://examdeploy.onrender.com/api/subjects/${id}`
+      );
       const subject = subjectRes.data;
       setSelectedSubject(subject);
 
       const studentRes = await axios.get(
-        `/api/students/filter?branch=${subject.branch}&semester=${subject.semester}`
+        `https://examdeploy.onrender.com/api/students/filter?branch=${subject.branch}&semester=${subject.semester}`
       );
       setStudents(studentRes.data);
       setAssignedTo(studentRes.data.map((s) => s._id));
 
-      const assignmentRes = await axios.get(`/api/assignment/subject/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const assignmentRes = await axios.get(
+        `https://examdeploy.onrender.com/api/assignment/subject/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       setAssignments(assignmentRes.data);
     } catch {
       toast.error("Failed to load subject details");
@@ -72,12 +79,16 @@ const CreateAssignment = () => {
         formData.append("referenceFile", referenceFile);
       }
 
-      await axios.post("/api/assignment", formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      await axios.post(
+        "https://examdeploy.onrender.com/api/assignment",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
       toast.success("Assignment created!");
       setTitle("");

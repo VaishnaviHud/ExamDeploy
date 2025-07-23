@@ -18,9 +18,12 @@ const AssignmentDetailsPage = () => {
   const fetchAssignment = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get(`/api/assignment/${assignmentId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const { data } = await axios.get(
+        `https://examdeploy.onrender.com/api/assignment/${assignmentId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setAssignment(data);
     } catch (err) {
       toast.error("Failed to fetch assignment");
